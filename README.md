@@ -86,6 +86,7 @@ STEP4: Go to the docker hub website
 
 
 ------------GITHUB-------------
+
 STEP1: Create a new public repository 
 
 STEP2: Go to the git bash and put the commands
