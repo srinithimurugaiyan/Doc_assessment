@@ -3,6 +3,7 @@ Docker Documentation
 Project 1: Application Containerization 
 
 ------------STATIC HTML ---------------
+
 STEP1: Make the directory  
        => sudo mkdir –p /var/www/html 
 
@@ -48,6 +49,7 @@ STEP11: Go to the Browser
 
 
 -------------DOCKER--------------
+
 STEP1: Create Dockerfile inside the directory
        => sudo nano Dockerfile
 
@@ -69,6 +71,7 @@ STEP5: To the container and images which was created
 
 
 ------------DOCKER HUB-------------
+
 STEP1: Login the docker hub
        => docker login -u username
 
