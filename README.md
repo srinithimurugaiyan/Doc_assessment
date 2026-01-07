@@ -82,4 +82,33 @@ STEP4: Go to the docker hub website
        <img width="1361" height="725" alt="image" src="https://github.com/user-attachments/assets/43aaead0-d5f9-4857-92da-b17536d71230" />
 
 
+------------GITHUB-------------
+STEP1: Create a new public repository 
+
+STEP2: Go to the git bash and put the commands
+
+STEP3: Initialize the git
+       => git init
+
+STEP4: Clone the repository
+       => git clone <url>
+
+STEP5: Check the current changes of repo
+       => git status
+
+STEP6: Stage all changes
+       => git add .
+
+STEP7: Check status
+       => git status
+
+STEP8: Committing changes
+       => git commit -m "message"
+
+STEP9: Push it in local commits
+       => git push
+
+
+
+
        
