@@ -243,105 +243,111 @@ Project 3: Multi-Container Networking
 --------------MULTIPLE CONTAINER--------------------
 
 STEP1: Create directories
-       => sudo mkdir -p /var/www/project3/redis-cli-container
-       => sudo mkdir -p /var/www/project3/redis-server-container
+       => mkdir project3
 
 STEP2: Change the current directory
-       => cd /var/www/project3
-
-STEP3: Redis CLI Dockerfile
-       => cd redis-cli-container
-       => sudo nano Dockerfile
-
-       Paste it,
-
-       FROM redis:alpine
-       ENTRYPOINT ["redis-cli"]
- 
-       Then click ctrl + o, Enter and ctrl + x
-
-STEP4: Redis Server Dockerfile
-       => cd ../redis-server-container
-       => sudo nano Dockerfile
-
-       Paste it,
-
-       FROM redis:latest
-       LABEL maintainer="I am Sri"
-       LABEL description="Redis server containerized"
-
-STEP5: Build docker images
-       => cd /var/www/project3
-       => sudo docker build -t redis-server-image ./redis-server-container
-
-       => sudo docker build -t redis-cli-image ./redis-cli-container
-
-STEP6: Create custom network
-       =>sudo docker network create redis-net
-
-STEP7: Run Redis Server container
-       => sudo docker run -d --name redis-server-container --network redis-net redis-server-image
-
-STEP8: Run Redis CLI container & test connection
-       => sudo docker run -it --rm --network redis-net redis-cli-image -h redis-server-container -p 6379
-
-<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/b15d0358-f239-4ced-81f6-d26292a98dd5" />
-
-STEP9: Type ---> exit
-
-STEP10: Create docker-compose.yml
+       => cd project3
+       
+STEP3: Create docker-compose.yml
         => sudo nano docker-compose.yml
 
         Paste it,
 
         version: "3.9"
 
-        services:
+services:
+  sri:  # Redis Server
+    image: redis:7
+    container_name: redis-server
+    networks:
+      - my-network
 
-        redis-server-container:
+  client:  # Redis Client
+    image: redis:7
+    container_name: redis-client
+    depends_on:
+      - sri
+    networks:
+      - my-network
+    command: ["sleep", "infinity"] 
 
-        image: redis-server-image:latest
+networks:
+  my-network:
+    driver: bridge
 
-        container_name: redis-server-container
+ Then click ctrl + o, Enter and ctrl + x
 
-        networks:
+STEP4: Verify the containers are running
+        => docker ps
 
-        - redis-net
+STEP5: Enter the client container
+       => docker exec -it redis-client bash
 
-       redis-cli-container:
+    The prompt shows that,
+       root@<container_id>:/data#
 
-       image: redis-cli-image:latest
+STEP6: Connect to the Redis server
+       => redis-cli -h sri
 
-       container_name: redis-cli-container
+   The prompt shows that,
+       sri:6379>
 
-       depends_on:
+STEP7: Test the connection
+   Type this,
+       => PING
 
-       - redis-server-container
+   Get,
+       => PONG
 
-       networks:
+<img width="982" height="74" alt="image" src="https://github.com/user-attachments/assets/577af868-a174-426b-8b8a-e9ac1e2c068b" />
 
-       - redis-net
+STEP8: Setting and Getting a key
+       => set mykey "HelloRedis"
+       => get mykey
 
-       entrypoint: ["sleep"]
+    Output is,
+       => HelloRedis
 
-       command: ["infinity"]
+<img width="1003" height="251" alt="image" src="https://github.com/user-attachments/assets/b45b4128-bba1-4b96-ad18-57ef30837b25" />
 
-       tty: true
+------------DOCKER HUB-------------
 
-       stdin_open: true
+STEP1: Login the docker hub
+       => docker login -u username
 
-       networks:
+STEP2: Docker tagging the image-name
+       => docker tag image_name username/image_name:latest
 
-       redis-net:
+STEP3: Push the image in the docker hub
+       => docker push username/image_name:latest
 
-       driver: bridge
+STEP4: Go to the docker hub website
 
-STEP11: Docker-compose is removed
-        => sudo apt-get remove docker-compose
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/ed81ee0e-3ee2-4260-9445-a9b749b2f66b" />
 
-STEP12: Installing Docker Compose manually
-       => sudo curl -L "https://github.com/docker/compose/releases/download/v2.21.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
- 
+------------GITHUB-------------
+
+STEP1: Initialize the git
+       => git init
+
+STEP2: Clone the repository
+       => git clone <url>
+
+STEP3: Check the current changes of repo
+       => git status
+
+STEP4: Stage all changes
+       => git add .
+
+STEP5: Check status
+       => git status
+
+STEP6: Committing changes
+       => git commit -m "message"
+
+STEP7: Push it in local commits
+       => git push
+
 
 
 
