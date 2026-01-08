@@ -336,8 +336,11 @@ STEP10: Create docker-compose.yml
 
        driver: bridge
 
-STEP11: 
+STEP11: Docker-compose is removed
+        => sudo apt-get remove docker-compose
 
+STEP12: Installing Docker Compose manually
+       => sudo curl -L "https://github.com/docker/compose/releases/download/v2.21.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
  
 
 
