@@ -348,7 +348,7 @@ STEP6: Committing changes
 STEP7: Push it in local commits
        => git push
 
-
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/7ff98973-808e-4adc-9b4b-0cd4fa14e9f4" />
 
 
 
