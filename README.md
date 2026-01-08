@@ -233,4 +233,68 @@ STEP7: Push it in local commits
 
 
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+Project 3: Multi-Container Networking 
+
+--------------MULTIPLE CONTAINER--------------------
+
+STEP1: Create directories
+       => sudo mkdir -p /var/www/project3/redis-cli-container
+       => sudo mkdir -p /var/www/project3/redis-server-container
+
+STEP2: Change the current directory
+       => cd /var/www/project3
+
+STEP3: Redis CLI Dockerfile
+       => cd redis-cli-container
+       => sudo nano Dockerfile
+
+       Paste it,
+
+       FROM redis:alpine
+       ENTRYPOINT ["redis-cli"]
+ 
+       Then click ctrl + o, Enter and ctrl + x
+
+STEP4: Redis Server Dockerfile
+       => cd ../redis-server-container
+       => sudo nano Dockerfile
+
+       Paste it,
+
+       FROM redis:latest
+       LABEL maintainer="I am Sri"
+       LABEL description="Redis server containerized"
+
+STEP5: Build docker images
+       => cd /var/www/project3
+       => sudo docker build -t redis-server-image ./redis-server-container
+
+       <img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/bf45f199-dbd2-4d32-be88-34b001b59b27" />
+
+       <img width="1029" height="203" alt="image" src="https://github.com/user-attachments/assets/3e05b82e-2a66-4bcf-b52d-e1110f419227" />
+
+
+       => sudo docker build -t redis-cli-image ./redis-cli-container
+
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
        
