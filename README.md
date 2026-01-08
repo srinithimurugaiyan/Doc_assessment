@@ -125,14 +125,112 @@ STEP1: Make the directory
        => sudo mkdir –p /var/www/project2 
 
 STEP2: Change the current directory
-       => cd /var/www/html
+       => cd /var/www/project2
 
-STEP3: Create HTML file inside the directory
-       => sudo nano /var/www/html/index.html
+STEP3: Create python file inside the directory
+       => sudo nano app.py
 
 STEP4: Type the code in the index.html
-       <h1>Hello Srinithi</h1>
-       <h4>Welcome to DevOps Team</h4>
+
+       import time
+       from datetime import datetime
+
+       while True:
+       with open("/data/log.txt", "a") as f:
+        f.write(f"Log entry at {datetime.now()}\n")
+       time.sleep(5)
+
+       Then click ctrl + o, Enter and ctrl + x
+
+
+STEP5: Run the python file
+       => python3 app.py
+
+-------------Docker---------------
+
+STEP1: Create a Dockerfile in the same directory
+       => sudo nano Dockerfile
+
+STEP2: Paste it
+       FROM python:3.11-slim
+       WORKDIR /app
+       COPY app.py .
+       CMD ["python", "app.py"]
+
+       Then click ctrl + o, Enter and ctrl + x
+
+STEP3: Build the image 
+       => docker build -t image_name .
+
+-------------VOLUME------------
+
+STEP1: Create a volume 
+       => docker volume create volume_name 
+
+STEP2: List it
+       => docker volume ls
+
+STEP3: Run the first container
+       => docker run -d --name container_name_1 -v volume_name:/data image_name
+
+STEP4: Check log file
+       => docker exec -it container_name_1 cat /data/log.txt
+
+<img width="1366" height="768" alt="Screenshot 2026-01-08 102309" src="https://github.com/user-attachments/assets/591dd2b2-8bab-4d31-b524-0dc52fedffe9" />
+
+STEP5: Stop the first container
+       => docker stop container_name_1
+
+STEP6: Remove the stopped container
+       => docker rm container_name_1
+
+STEP7: Run the second conatiner
+       => docker run -d --name container_name_2 -v volume_name:/data image_name
+
+STEP8: Check log file
+       => docker exec -it container_name_2 cat /data/log.txt
+
+<img width="1366" height="768" alt="Screenshot 2026-01-08 102422" src="https://github.com/user-attachments/assets/f59c3593-1758-45d5-8c6f-bb07a2e45501" />
+
+------------DOCKER HUB-------------
+
+STEP1: Login the docker hub
+       => docker login -u username
+
+STEP2: Docker tagging the image-name
+       => docker tag image_name username/image_name:latest
+
+STEP3: Push the image in the docker hub
+       => docker push username/image_name:latest
+
+STEP4: Go to the docker hub website
+       <img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/7b64002f-5775-43f9-b468-7c5cf2bf18c0" />
+
+------------GITHUB-------------
+
+STEP1: Initialize the git
+       => git init
+
+STEP2: Clone the repository
+       => git clone <url>
+
+STEP3: Check the current changes of repo
+       => git status
+
+STEP4: Stage all changes
+       => git add .
+
+STEP5: Check status
+       => git status
+
+STEP6: Committing changes
+       => git commit -m "message"
+
+STEP7: Push it in local commits
+       => git push
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/a73be50e-c15e-404c-a5c0-195f5bbf4e00" />
+
 
 
        
