@@ -115,4 +115,24 @@ STEP9: Push it in local commits
 
 
 
+
+
+Project 2: Data Persistence 
+
+-------------APPLICATION USING PYTHON------------------
+
+STEP1: Make the directory  
+       => sudo mkdir –p /var/www/project2 
+
+STEP2: Change the current directory
+       => cd /var/www/html
+
+STEP3: Create HTML file inside the directory
+       => sudo nano /var/www/html/index.html
+
+STEP4: Type the code in the index.html
+       <h1>Hello Srinithi</h1>
+       <h4>Welcome to DevOps Team</h4>
+
+
        
