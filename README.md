@@ -287,8 +287,58 @@ STEP8: Run Redis CLI container & test connection
 
 <img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/b15d0358-f239-4ced-81f6-d26292a98dd5" />
 
+STEP9: Type ---> exit
 
-       
+STEP10: Create docker-compose.yml
+        => sudo nano docker-compose.yml
+
+        Paste it,
+
+        version: "3.9"
+
+        services:
+
+        redis-server-container:
+
+        image: redis-server-image:latest
+
+        container_name: redis-server-container
+
+        networks:
+
+        - redis-net
+
+       redis-cli-container:
+
+       image: redis-cli-image:latest
+
+       container_name: redis-cli-container
+
+       depends_on:
+
+       - redis-server-container
+
+       networks:
+
+       - redis-net
+
+       entrypoint: ["sleep"]
+
+       command: ["infinity"]
+
+       tty: true
+
+       stdin_open: true
+
+       networks:
+
+       redis-net:
+
+       driver: bridge
+
+STEP11: 
+
+ 
 
 
 
