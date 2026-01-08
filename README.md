@@ -274,9 +274,9 @@ STEP5: Build docker images
        => cd /var/www/project3
        => sudo docker build -t redis-server-image ./redis-server-container
 
-       <img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/bf45f199-dbd2-4d32-be88-34b001b59b27" />
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/bf45f199-dbd2-4d32-be88-34b001b59b27" />
 
-       <img width="1029" height="203" alt="image" src="https://github.com/user-attachments/assets/3e05b82e-2a66-4bcf-b52d-e1110f419227" />
+<img width="1029" height="203" alt="image" src="https://github.com/user-attachments/assets/3e05b82e-2a66-4bcf-b52d-e1110f419227" />
 
 
        => sudo docker build -t redis-cli-image ./redis-cli-container
