@@ -251,29 +251,29 @@ STEP2: Change the current directory
 STEP3: Create docker-compose.yml
         => sudo nano docker-compose.yml
 
-        Paste it,
+Paste it,
 
         version: "3.9"
 
-services:
-  sri:  # Redis Server
-    image: redis:7
-    container_name: redis-server
-    networks:
-      - my-network
+        services:
+        sri:  # Redis Server
+        image: redis:7
+        container_name: redis-server
+        networks:
+        - my-network
 
-  client:  # Redis Client
-    image: redis:7
-    container_name: redis-client
-    depends_on:
-      - sri
-    networks:
-      - my-network
-    command: ["sleep", "infinity"] 
+       client:  # Redis Client
+       image: redis:7
+       container_name: redis-client
+        depends_on:
+        - sri
+       networks:
+       - my-network
+       command: ["sleep", "infinity"] 
 
-networks:
-  my-network:
-    driver: bridge
+       networks:
+       my-network:
+       driver: bridge
 
  Then click ctrl + o, Enter and ctrl + x
 
