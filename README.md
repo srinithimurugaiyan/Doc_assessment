@@ -21,14 +21,14 @@ STEP5: Configuration of Static HTML website
        => sudo nano /etc/nginx/sites-available/html
 
 STEP6: Type it
-       server {
-       listen 8009;
-       root /var/www/html;
-       index index.html;
-       location / {
-       try_files $uri $uri/ =404;
-       }
-       }
+         server {
+         listen 8009;
+         root /var/www/html;
+         index index.html;
+         location / {
+         try_files $uri $uri/ =404;
+         }
+         }
 
       Then click ctrl + o, Enter and ctrl + x
 
